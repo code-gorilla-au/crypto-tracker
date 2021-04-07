@@ -1,33 +1,50 @@
 :root {
-    --colour-primary-lighter: #14a0d3;
-    --colour-primary-light: #14a0d3;
-    --colour-primary-default: #14a0d3;
-    --colour-primary-dark: #14a0d3;
-    --colour-primary-darker: #14a0d3;
+    --colour-primary-lighter: #EBAA3B;
+    --colour-primary-light: #EBAA3B;
+    --colour-primary-default: #EBAA3B;
+    --colour-primary-dark: #EBAA3B;
+    --colour-primary-darker: #EBAA3B;
 
-    --colour-accent-lighter: #37464d;
-    --colour-accent-light: #37464d;
-    --colour-accent-default: #37464d;
-    --colour-accent-dark: #37464d;
-    --colour-accent-darker: #37464d;
+    --colour-accent-lighter: #9BB5AE;
+    --colour-accent-light: #9BB5AE;
+    --colour-accent-default: #9BB5AE;
+    --colour-accent-dark: #9BB5AE;
+    --colour-accent-darker: #9BB5AE;
 
-    --colour-dark-lighter: #37464d;
-    --colour-dark-light: #37464d;
-    --colour-dark-default: #37464d;
-    --colour-dark-dark: #37464d;
-    --colour-dark-darker: #37464d;
+    --colour-dark-lighter: #304B49;
+    --colour-dark-light: #304B49;
+    --colour-dark-default: #304B49;
+    --colour-dark-dark: #304B49;
+    --colour-dark-darker: #304B49;
 
     --colour-success-default: #53c78d;
     --colour-warning-default: #ffd166;
     --colour-danger-default: #ed2222;
 
-    --colour-white-default: white;
+    --colour-white-default: #F5F6F2;
     --shadow-light: rgba(0, 0, 0, 0.34);
     --shadow-med: rgba(0, 0, 0, 0.49);
     --shadow-dark: (0, 0, 0, 0.67);
     --font-sm: 0.6rem;
     --font-md: 1rem;
     --font-lg: 1.4rem;
+}
+
+h1,h2,h3,h4,h5,p {
+  color: var(--colour-white-default);
+}
+
+html,body {
+  padding:0;
+  margin: 0;
+  background-color: var(--colour-dark-default);
+}
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  height: 100vh;
+  width: 100vw;
 }
 
 @tailwind base;
