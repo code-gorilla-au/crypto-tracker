@@ -12,9 +12,22 @@ module.exports = {
           LIGHTER: 'var(--colour-primary-lighter)',
           LIGHT: 'var(--colour-primary-light',
           DEFAULT: 'var(--colour-primary-default)',
+          DARK: 'var(--colour-primary-dark)',
+          DARKER: 'var(--colour-primary-darker)',
         },
-        secondary: {
-          DEFAULT: 'var(--colour-secondary-default)',
+        accent: {
+          LIGHTER: 'var(--colour-accent-lighter)',
+          LIGHT: 'var(--colour-accent-light)',
+          DEFAULT: 'var(--colour-accent-default)',
+          DARK: 'var(--colour-accent-dark)',
+          DARKER: 'var(--colour-accent-darker)',
+        },
+        dark: {
+          LIGHTER: 'var(--colour-dark-lighter)',
+          LIGHT: 'var(--colour-dark-light)',
+          DEFAULT: 'var(--colour-dark-default)',
+          DARK: 'var(--colour-dark-dark)',
+          DARKER: 'var(--colour-dark-darker)',
         },
         success: {
           DEFAULT: 'var(--colour-success-default)',
