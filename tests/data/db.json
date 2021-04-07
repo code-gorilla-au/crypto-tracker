@@ -1,5 +1,5 @@
 {
-    "coins/markets": [
+    "markets": [
         {
             "id": "bitcoin",
             "symbol": "btc",

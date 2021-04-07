@@ -8,17 +8,17 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import CurrencyTable from '@/components/CurrencyTable.vue';
+import getCurrencies from '@/api/coinGeko';
 
 export default defineComponent({
   name: 'Home',
   components: {
     CurrencyTable,
   },
-  setup() {
+  async setup() {
+    const { data } = await getCurrencies();
     return {
-      list: [
-        { hello: 'world' },
-      ],
+      list: data,
     };
   },
 });
