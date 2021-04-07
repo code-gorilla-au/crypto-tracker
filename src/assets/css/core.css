@@ -4,16 +4,19 @@
     --colour-primary-default: #14a0d3;
     --colour-primary-dark: #14a0d3;
     --colour-primary-darker: #14a0d3;
+
     --colour-accent-lighter: #37464d;
     --colour-accent-light: #37464d;
     --colour-accent-default: #37464d;
     --colour-accent-dark: #37464d;
     --colour-accent-darker: #37464d;
+
     --colour-dark-lighter: #37464d;
     --colour-dark-light: #37464d;
     --colour-dark-default: #37464d;
     --colour-dark-dark: #37464d;
     --colour-dark-darker: #37464d;
+
     --colour-success-default: #53c78d;
     --colour-warning-default: #ffd166;
     --colour-danger-default: #ed2222;
