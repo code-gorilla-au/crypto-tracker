@@ -9,12 +9,6 @@
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint"
   },
-  "postcss": {
-    "plugins": {
-      "tailwindcss": {},
-      "autoprefixer": {}
-    }
-  },
   "dependencies": {
     "axios": "^0.21.1",
     "core-js": "^3.6.5",

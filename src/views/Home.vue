@@ -1,7 +1,7 @@
 <template>
-  <div class="home-main">
+  <div class="flex just-center items-center flex-col">
     <h1 class="home-title">Crypto Tracker</h1>
-    <CurrencyTable :currencies="list"/>
+    <CurrencyTable :currencies="list" />
   </div>
 </template>
 
@@ -24,12 +24,6 @@ export default defineComponent({
 });
 </script>
 <style scoped>
-.home-main {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
 .home-title {
   font-size: var(--font-lg);
   font-weight: var(--font-bolder);
