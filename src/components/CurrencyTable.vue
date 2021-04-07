@@ -1,8 +1,8 @@
 <template>
   <div class="flex">
-    <div class="flex ">
-      <ul class="">
-        <li v-for="header in headers" :key="header">{{ header }}</li>
+    <div class="hidden sm:flex">
+      <ul class="flex m-1 justify-evenly">
+        <li class="" v-for="header in headers" :key="header">{{ header }}</li>
       </ul>
     </div>
   </div>
@@ -23,7 +23,7 @@ export default defineComponent({
   setup(props) {
     const headers = [
       'id',
-      'sumbol',
+      'symbol',
       'name',
       'image',
       'current price',
