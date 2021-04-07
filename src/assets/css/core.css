@@ -28,6 +28,8 @@
     --font-sm: 0.6rem;
     --font-md: 1rem;
     --font-lg: 1.4rem;
+    --font-bold: 700;
+    --font-bolder: 900;
 }
 
 h1,h2,h3,h4,h5,p {

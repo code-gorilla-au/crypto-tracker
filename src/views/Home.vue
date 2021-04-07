@@ -1,8 +1,8 @@
 <template>
-  <main class="home-main">
-    <h1>Crypto Tracker</h1>
+  <div class="home-main">
+    <h1 class="home-title">Crypto Tracker</h1>
     <CurrencyTable :currencies="list"/>
-  </main>
+  </div>
 </template>
 
 <script lang="ts">
@@ -27,5 +27,11 @@ export default defineComponent({
 .home-main {
   display: flex;
   justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.home-title {
+  font-size: var(--font-lg);
+  font-weight: var(--font-bolder);
 }
 </style>
