@@ -9,25 +9,25 @@ module.exports = {
     extend: {
       colors: {
         primary: {
-          LIGHTER: 'var(--colour-primary-lighter)',
-          LIGHT: 'var(--colour-primary-light',
+          lighter: 'var(--colour-primary-lighter)',
+          light: 'var(--colour-primary-light',
           DEFAULT: 'var(--colour-primary-default)',
-          DARK: 'var(--colour-primary-dark)',
-          DARKER: 'var(--colour-primary-darker)',
+          dark: 'var(--colour-primary-dark)',
+          darker: 'var(--colour-primary-darker)',
         },
         accent: {
-          LIGHTER: 'var(--colour-accent-lighter)',
-          LIGHT: 'var(--colour-accent-light)',
+          lighter: 'var(--colour-accent-lighter)',
+          light: 'var(--colour-accent-light)',
           DEFAULT: 'var(--colour-accent-default)',
-          DARK: 'var(--colour-accent-dark)',
-          DARKER: 'var(--colour-accent-darker)',
+          dark: 'var(--colour-accent-dark)',
+          darker: 'var(--colour-accent-darker)',
         },
         dark: {
-          LIGHTER: 'var(--colour-dark-lighter)',
-          LIGHT: 'var(--colour-dark-light)',
+          lighter: 'var(--colour-dark-lighter)',
+          light: 'var(--colour-dark-light)',
           DEFAULT: 'var(--colour-dark-default)',
-          DARK: 'var(--colour-dark-dark)',
-          DARKER: 'var(--colour-dark-darker)',
+          dark: 'var(--colour-dark-dark)',
+          darker: 'var(--colour-dark-darker)',
         },
         success: {
           DEFAULT: 'var(--colour-success-default)',

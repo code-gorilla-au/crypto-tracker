@@ -1,10 +1,14 @@
 <template>
   <div class="flex">
-    <div class="hidden sm:flex">
-      <ul class="flex m-1 justify-evenly">
-        <li class="" v-for="header in headers" :key="header">{{ header }}</li>
-      </ul>
-    </div>
+    <table class="min-w-full table-auto">
+      <thead class="justify-between">
+        <tr class="primary">
+          <th>
+            <span>hello</span>
+          </th>
+        </tr>
+      </thead>
+    </table>
   </div>
 </template>
 

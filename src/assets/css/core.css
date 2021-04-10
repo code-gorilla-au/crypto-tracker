@@ -1,43 +1,49 @@
 :root {
-    --colour-primary-lighter: #EBAA3B;
-    --colour-primary-light: #EBAA3B;
-    --colour-primary-default: #EBAA3B;
-    --colour-primary-dark: #EBAA3B;
-    --colour-primary-darker: #EBAA3B;
+  --colour-primary-lighter: #ebaa3b;
+  --colour-primary-light: #ebaa3b;
+  --colour-primary-default: #ebaa3b;
+  --colour-primary-dark: #ebaa3b;
+  --colour-primary-darker: #ebaa3b;
 
-    --colour-accent-lighter: #9BB5AE;
-    --colour-accent-light: #9BB5AE;
-    --colour-accent-default: #9BB5AE;
-    --colour-accent-dark: #9BB5AE;
-    --colour-accent-darker: #9BB5AE;
+  --colour-accent-lighter: #9bb5ae;
+  --colour-accent-light: #9bb5ae;
+  --colour-accent-default: #9bb5ae;
+  --colour-accent-dark: #9bb5ae;
+  --colour-accent-darker: #9bb5ae;
 
-    --colour-dark-lighter: #304B49;
-    --colour-dark-light: #304B49;
-    --colour-dark-default: #304B49;
-    --colour-dark-dark: #304B49;
-    --colour-dark-darker: #304B49;
+  --colour-dark-lighter: #304b49;
+  --colour-dark-light: #304b49;
+  --colour-dark-default: #304b49;
+  --colour-dark-dark: #304b49;
+  --colour-dark-darker: #304b49;
 
-    --colour-success-default: #53c78d;
-    --colour-warning-default: #ffd166;
-    --colour-danger-default: #ed2222;
+  --colour-success-default: #53c78d;
+  --colour-warning-default: #ffd166;
+  --colour-danger-default: #ed2222;
 
-    --colour-white-default: #F5F6F2;
-    --shadow-light: rgba(0, 0, 0, 0.34);
-    --shadow-med: rgba(0, 0, 0, 0.49);
-    --shadow-dark: (0, 0, 0, 0.67);
-    --font-sm: 0.6rem;
-    --font-md: 1rem;
-    --font-lg: 1.4rem;
-    --font-bold: 700;
-    --font-bolder: 900;
+  --colour-white-default: #f5f6f2;
+  --shadow-light: rgba(0, 0, 0, 0.34);
+  --shadow-med: rgba(0, 0, 0, 0.49);
+  --shadow-dark: (0, 0, 0, 0.67);
+  --font-sm: 0.6rem;
+  --font-md: 1rem;
+  --font-lg: 1.4rem;
+  --font-bold: 700;
+  --font-bolder: 900;
 }
 
-h1,h2,h3,h4,h5,p {
+h1,
+h2,
+h3,
+h4,
+h5,
+p {
   color: var(--colour-white-default);
 }
 
-html,body {
-  padding:0;
+html,
+body {
+  padding: 0;
   margin: 0;
   background-color: var(--colour-dark-default);
 }
