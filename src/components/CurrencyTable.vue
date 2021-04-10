@@ -2,7 +2,7 @@
   <div class="flex">
     <table class="min-w-full table-auto">
       <thead class="justify-between">
-        <tr class="primary">
+        <tr class="bg-blue-200">
           <th>
             <span>hello</span>
           </th>
