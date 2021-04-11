@@ -73,7 +73,7 @@ import { Currency } from '@/lib/coinGeko';
 import { formatCurrency, formatPercent } from '@/lib/format';
 
 export default defineComponent({
-  name: 'CurrencyTable',
+  name: 'PortfolioTable',
   props: {
     currencies: {
       type: Object as PropType<Currency[]>,
