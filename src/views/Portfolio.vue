@@ -1,7 +1,9 @@
 <template>
   <div class="flex justify-center items-center flex-col">
-    <h1 class="portfolio-home-title">Portfolio</h1>
-    <Nav />
+    <div class="flex my-6 w-1/2 flex-col justify-center items-center">
+      <h1 class="portfolio-home-title">Portfolio</h1>
+      <Nav class="w-1/3" />
+    </div>
     <PorfolioTable :portfolio="portfolio" @remove-from-portfolio="removeFromPortfolio" />
   </div>
 </template>
