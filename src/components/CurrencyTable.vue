@@ -28,7 +28,7 @@
           <td class="text-left py-3 px-4">
             <div class="flex justify-between items-center">
               <base-icon
-                class="cursor-pointer"
+                class="cursor-pointer text-yellow-500"
                 v-if="isInPortfolio(currency)"
                 @click="removeFromPortfolio(currency)"
                 pack="fas"
