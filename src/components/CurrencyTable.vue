@@ -29,7 +29,7 @@
             <div class="flex justify-between items-center">
               <base-icon
                 class="cursor-pointer text-yellow-500"
-                v-if="isInPortfolio(currency)"
+                v-if="isInPortfolio(currency, portfolio)"
                 @click.="removeFromPortfolio(currency)"
                 pack="fas"
                 icon="fa-star"
@@ -94,11 +94,9 @@ export default defineComponent({
       ctx.emit('remove-from-portfolio', currency);
     }
 
-    function isInPortfolio(currency: Currency): boolean {
-      const index = props.portfolio.findIndex(
-        (item) => item.id === currency.id && item.name === currency.name,
-      );
-      return index > 0;
+    function isInPortfolio(currency: Currency, portfolio: Currency[]): boolean {
+      const list = portfolio.filter((item) => item.id === currency.id);
+      return list.length > 0;
     }
 
     return {
