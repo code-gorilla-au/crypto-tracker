@@ -28,12 +28,19 @@
           <td class="text-left py-3 px-4">
             <div class="flex justify-between items-center">
               <base-icon
+                class="cursor-pointer"
                 v-if="isInPortfolio(currency)"
                 @click="removeFromPortfolio(currency)"
                 pack="fas"
                 icon="fa-star"
               />
-              <base-icon v-else @click="addToPortfolio(currency)" pack="far" icon="fa-star" />
+              <base-icon
+                class="cursor-pointer text-yellow-500"
+                v-else
+                @click="addToPortfolio(currency)"
+                pack="far"
+                icon="fa-star"
+              />
               <span>{{ currency.market_cap_rank }}</span>
             </div>
           </td>
@@ -80,10 +87,10 @@ export default defineComponent({
     const headerStyle = computed(() => 'py-3 px-4 font-semibold text-sm');
     const store = useStore();
 
-    function addToPortfolio(currency: Currency) {
+    function addToPortfolio(currency: Currency): void {
       store.dispatch(ADD_TO_PORTFOLIO, currency);
     }
-    function removeFromPortfolio(currency: Currency) {
+    function removeFromPortfolio(currency: Currency): void {
       store.dispatch(REMOVE_TO_PORTFOLIO, currency);
     }
     function isInPortfolio(currency: Currency): boolean {
