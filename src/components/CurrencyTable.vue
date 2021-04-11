@@ -26,7 +26,16 @@
       <tbody class="text-gray-700">
         <tr v-for="currency in list" :key="currency.id">
           <td class="text-left py-3 px-4">
-            <span>{{ currency.market_cap_rank }}</span>
+            <div class="flex justify-between items-center">
+              <base-icon
+                v-if="isInPortfolio(currency)"
+                @click="removeFromPortfolio(currency)"
+                pack="fas"
+                icon="fa-star"
+              />
+              <base-icon v-else @click="addToPortfolio(currency)" pack="far" icon="fa-star" />
+              <span>{{ currency.market_cap_rank }}</span>
+            </div>
           </td>
           <td :class="['flex justify-start items-center py-3 px-4', 'w-1/7']">
             <img class="currency-image" :src="currency.image" :alt="currency.name" />
@@ -53,6 +62,9 @@
 
 <script lang="ts">
 import { computed, defineComponent, PropType } from 'vue';
+import { useStore } from 'vuex';
+import { State } from '@/store/index';
+import { ADD_TO_PORTFOLIO, REMOVE_TO_PORTFOLIO } from '@/store/constants';
 import { Currency } from '@/lib/coinGeko';
 import { formatCurrency, formatPercent } from '@/lib/format';
 
@@ -66,11 +78,27 @@ export default defineComponent({
   },
   setup(props) {
     const headerStyle = computed(() => 'py-3 px-4 font-semibold text-sm');
+    const store = useStore();
+
+    function addToPortfolio(currency: Currency) {
+      store.dispatch(ADD_TO_PORTFOLIO, currency);
+    }
+    function removeFromPortfolio(currency: Currency) {
+      store.dispatch(REMOVE_TO_PORTFOLIO, currency);
+    }
+    function isInPortfolio(currency: Currency): boolean {
+      const { portfolio }: State = store.state;
+      const index = portfolio.findIndex((item) => item.id === currency.id);
+      return index > 0;
+    }
     return {
       list: props.currencies,
       headerStyle,
+      addToPortfolio,
+      removeFromPortfolio,
       formatCurrency,
       formatPercent,
+      isInPortfolio,
     };
   },
 });
