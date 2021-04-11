@@ -69,9 +69,6 @@
 
 <script lang="ts">
 import { computed, defineComponent, PropType } from 'vue';
-import { useStore } from 'vuex';
-import { State } from '@/store/index';
-import { ADD_TO_PORTFOLIO, REMOVE_TO_PORTFOLIO } from '@/store/constants';
 import { Currency } from '@/lib/coinGeko';
 import { formatCurrency, formatPercent } from '@/lib/format';
 
@@ -82,22 +79,26 @@ export default defineComponent({
       type: Object as PropType<Currency[]>,
       required: true,
     },
+    portfolio: {
+      type: Object as PropType<Currency[]>,
+      required: true,
+    },
   },
-  setup(props) {
+  setup(props, ctx) {
     const headerStyle = computed(() => 'py-3 px-4 font-semibold text-sm');
-    const store = useStore();
 
     function addToPortfolio(currency: Currency): void {
-      store.dispatch(ADD_TO_PORTFOLIO, currency);
+      ctx.emit('add-to-portfolier', currency);
     }
     function removeFromPortfolio(currency: Currency): void {
-      store.dispatch(REMOVE_TO_PORTFOLIO, currency);
+      ctx.emit('remove-from-portfolio', currency);
     }
+
     function isInPortfolio(currency: Currency): boolean {
-      const { portfolio }: State = store.state;
-      const index = portfolio.findIndex((item) => item.id === currency.id);
+      const index = props.portfolio.findIndex((item) => item.id === currency.id);
       return index > 0;
     }
+
     return {
       list: props.currencies,
       headerStyle,
