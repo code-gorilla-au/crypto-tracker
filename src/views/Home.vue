@@ -12,7 +12,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { computed, defineComponent } from 'vue';
 import { useStore } from 'vuex';
 import { Currency } from '@/lib/coinGeko';
 import { ADD_TO_PORTFOLIO, REMOVE_TO_PORTFOLIO } from '@/store/constants';
@@ -28,18 +28,19 @@ export default defineComponent({
   },
   async setup() {
     const store = useStore();
+    const portfolio = computed(() => store.state.portfolio);
     const { data } = await getCurrencies();
 
-    function addToPortfolio(currency: Currency): void {
-      store.dispatch(ADD_TO_PORTFOLIO, currency);
+    async function addToPortfolio(currency: Currency): Promise<void> {
+      await store.dispatch(ADD_TO_PORTFOLIO, currency);
     }
-    function removeFromPortfolio(currency: Currency): void {
-      store.dispatch(REMOVE_TO_PORTFOLIO, currency);
+    async function removeFromPortfolio(currency: Currency): Promise<void> {
+      await store.dispatch(REMOVE_TO_PORTFOLIO, currency);
     }
 
     return {
       list: data,
-      portfolio: store.state.portfolio,
+      portfolio,
       addToPortfolio,
       removeFromPortfolio,
     };

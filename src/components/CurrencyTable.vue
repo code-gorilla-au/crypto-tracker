@@ -95,7 +95,9 @@ export default defineComponent({
     }
 
     function isInPortfolio(currency: Currency): boolean {
-      const index = props.portfolio.findIndex((item) => item.id === currency.id);
+      const index = props.portfolio.findIndex(
+        (item) => item.id === currency.id && item.name === currency.name,
+      );
       return index > 0;
     }
 

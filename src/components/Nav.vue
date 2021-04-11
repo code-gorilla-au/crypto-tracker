@@ -1,6 +1,6 @@
 <template>
-  <nav>
-    <router-link to="/">home</router-link>
+  <nav class="flex w-1/3 justify-evenly items-center">
+    <router-link to="/">home</router-link> |
     <router-link to="/portfolio">portfolio</router-link>
   </nav>
 </template>

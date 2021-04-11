@@ -13,10 +13,10 @@ const initState: State = {
 export default createStore({
   state: initState,
   mutations: {
-    [ADD_TO_PORTFOLIO](state, currency: Currency) {
-      state.portfolio.push(currency);
+    [ADD_TO_PORTFOLIO](state: State, currency: Currency) {
+      state.portfolio = [...state.portfolio, currency];
     },
-    [REMOVE_TO_PORTFOLIO](state, currency: Currency) {
+    [REMOVE_TO_PORTFOLIO](state: State, currency: Currency) {
       const index = state.portfolio.findIndex((element) => element.id === currency.id);
       state.portfolio.splice(index, 1);
     },
