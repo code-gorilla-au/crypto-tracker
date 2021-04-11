@@ -1,25 +1,25 @@
 <template>
   <div class="flex">
     <table class="min-w-full bg-white">
-      <thead class="justify-between">
+      <thead class="">
         <tr class="bg-gray-800 text-white">
-          <th :key="header" :class="headerStyle">
+          <th :class="headerStyle">
             <span>#</span>
           </th>
-          <th :key="header" :class="headerStyle">
+          <th :class="[headerStyle, 'w-1/7 text-left']">
             <span>Name</span>
           </th>
-          <th :key="header" :class="headerStyle">
+          <th :class="[headerStyle, 'w-1/3 text-right']">
             <span>Current Price</span>
           </th>
-          <th :key="header" :class="headerStyle">
+          <th :class="[headerStyle, 'w-1/3 text-right']">
             <span>Market Cap</span>
           </th>
-          <th :key="header" :class="headerStyle">
+          <th :class="[headerStyle, 'w-1/3 text-right']">
             <span>Total Volume</span>
           </th>
-          <th :key="header" :class="headerStyle">
-            <span>Change %</span>
+          <th :class="[headerStyle, 'w-1/3 text-right']">
+            <span>%</span>
           </th>
         </tr>
       </thead>
@@ -28,22 +28,22 @@
           <td class="text-left py-3 px-4">
             <span>{{ currency.market_cap_rank }}</span>
           </td>
-          <td :class="rowStyle">
+          <td :class="['flex justify-start items-center py-3 px-4', 'w-1/7']">
             <img class="currency-image" :src="currency.image" :alt="currency.name" />
             <span>{{ currency.name }}</span>
           </td>
           <td class="text-right py-3 px-4">
-            <span>{{ currency.current_price }}</span>
+            <span>{{ formatCurrency(currency.current_price) }}</span>
           </td>
 
           <td class="text-right py-3 px-4">
-            <span>{{ currency.market_cap }}</span>
+            <span>{{ formatCurrency(currency.market_cap) }}</span>
           </td>
           <td class="text-right py-3 px-4">
-            <span>{{ currency.total_volume }}</span>
+            <span>{{ formatCurrency(currency.total_volume) }}</span>
           </td>
           <td class="text-right py-3 px-4">
-            <span>{{ currency.price_change_percentage_24h }}</span>
+            <span>{{ formatPercent(currency.price_change_percentage_24h) }}</span>
           </td>
         </tr>
       </tbody>
@@ -54,6 +54,7 @@
 <script lang="ts">
 import { computed, defineComponent, PropType } from 'vue';
 import { Currency } from '@/lib/coinGeko';
+import { formatCurrency, formatPercent } from '@/lib/format';
 
 export default defineComponent({
   name: 'CurrencyTable',
@@ -64,14 +65,12 @@ export default defineComponent({
     },
   },
   setup(props) {
-    const headers = ['#', 'name', 'current price', 'market cap', 'total volume', 'change %'];
-    const headerStyle = computed(() => 'w-1/3 text-left py-3 px-4 font-semibold text-sm');
-    const rowStyle = computed(() => 'flex justify-start items-center w-1/7 py-3 px-4');
+    const headerStyle = computed(() => 'py-3 px-4 font-semibold text-sm');
     return {
       list: props.currencies,
-      headers,
       headerStyle,
-      rowStyle,
+      formatCurrency,
+      formatPercent,
     };
   },
 });
