@@ -30,7 +30,7 @@
               <base-icon
                 class="cursor-pointer text-yellow-500"
                 v-if="isInPortfolio(currency)"
-                @click="removeFromPortfolio(currency)"
+                @click.="removeFromPortfolio(currency)"
                 pack="fas"
                 icon="fa-star"
               />
@@ -68,7 +68,7 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, PropType } from 'vue';
+import { computed, defineComponent, PropType, watchEffect } from 'vue';
 import { Currency } from '@/lib/coinGeko';
 import { formatCurrency, formatPercent } from '@/lib/format';
 
