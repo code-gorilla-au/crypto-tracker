@@ -1,12 +1,14 @@
 module.exports = {
-  purge: ['./public/index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
-  darkMode: false, // or 'media' or 'class'
+  purge: [
+    './src/**/*.vue',
+  ],
+  darkMode: false,
   theme: {
     extend: {
       colors: {
         primary: {
           lighter: 'var(--colour-primary-lighter)',
-          light: 'var(--colour-primary-light',
+          light: 'var(--colour-primary-light)',
           DEFAULT: 'var(--colour-primary-default)',
           dark: 'var(--colour-primary-dark)',
           darker: 'var(--colour-primary-darker)',
@@ -24,21 +26,6 @@ module.exports = {
           DEFAULT: 'var(--colour-dark-default)',
           dark: 'var(--colour-dark-dark)',
           darker: 'var(--colour-dark-darker)',
-        },
-        success: {
-          DEFAULT: 'var(--colour-success-default)',
-        },
-        warning: {
-          DEFAULT: 'var(--colour-warning-default)',
-        },
-        danger: {
-          DEFAULT: 'var(--colour-danger-default)',
-        },
-        neutral: {
-          DEFAULT: 'var(--colour-neutral-default)',
-        },
-        white: {
-          DEFAULT: 'var(--colour-white-default)',
         },
       },
     },

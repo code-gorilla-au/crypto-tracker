@@ -1,5 +1,5 @@
 <template>
-  <div class="flex just-center items-center flex-col">
+  <div class="flex justify-center items-center flex-col">
     <h1 class="home-title">Crypto Tracker</h1>
     <CurrencyTable :currencies="list" />
   </div>
