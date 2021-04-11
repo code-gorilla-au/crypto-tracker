@@ -1,7 +1,9 @@
 <template>
   <div class="flex justify-center items-center flex-col">
-    <h1 class="home-title">Crypto Tracker</h1>
-    <Nav />
+    <div class="flex my-6 flex-col justify-center">
+      <h1 class="home-title">Crypto Tracker</h1>
+      <Nav />
+    </div>
     <CurrencyTable
       :currencies="list"
       :portfolio="portfolio"
