@@ -5,7 +5,7 @@
     <CurrencyTable
       :currencies="list"
       :portfolio="portfolio"
-      @add-to-portfolier="addToPortfolio"
+      @add-to-portfolio="addToPortfolio"
       @remove-from-portfolio="removeFromPortfolio"
     />
   </div>

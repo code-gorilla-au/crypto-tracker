@@ -88,7 +88,7 @@ export default defineComponent({
     const headerStyle = computed(() => 'py-3 px-4 font-semibold text-sm');
 
     function addToPortfolio(currency: Currency): void {
-      ctx.emit('add-to-portfolier', currency);
+      ctx.emit('add-to-portfolio', currency);
     }
     function removeFromPortfolio(currency: Currency): void {
       ctx.emit('remove-from-portfolio', currency);

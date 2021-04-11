@@ -24,21 +24,13 @@
         </tr>
       </thead>
       <tbody class="text-gray-700">
-        <tr v-for="currency in list" :key="currency.id">
+        <tr v-for="currency in portfolio" :key="currency.id">
           <td class="text-left py-3 px-4">
             <div class="flex justify-between items-center">
               <base-icon
                 class="cursor-pointer text-yellow-500"
-                v-if="isInPortfolio(currency, portfolio)"
                 @click="removeFromPortfolio(currency)"
                 pack="fas"
-                icon="fa-star"
-              />
-              <base-icon
-                class="cursor-pointer text-yellow-500"
-                v-else
-                @click="addToPortfolio(currency)"
-                pack="far"
                 icon="fa-star"
               />
               <span>{{ currency.market_cap_rank }}</span>
@@ -75,10 +67,6 @@ import { formatCurrency, formatPercent } from '@/lib/format';
 export default defineComponent({
   name: 'PortfolioTable',
   props: {
-    currencies: {
-      type: Object as PropType<Currency[]>,
-      required: true,
-    },
     portfolio: {
       type: Object as PropType<Currency[]>,
       required: true,
@@ -87,9 +75,6 @@ export default defineComponent({
   setup(props, ctx) {
     const headerStyle = computed(() => 'py-3 px-4 font-semibold text-sm');
 
-    function addToPortfolio(currency: Currency): void {
-      ctx.emit('add-to-portfolier', currency);
-    }
     function removeFromPortfolio(currency: Currency): void {
       ctx.emit('remove-from-portfolio', currency);
     }
@@ -100,9 +85,7 @@ export default defineComponent({
     }
 
     return {
-      list: props.currencies,
       headerStyle,
-      addToPortfolio,
       removeFromPortfolio,
       formatCurrency,
       formatPercent,
