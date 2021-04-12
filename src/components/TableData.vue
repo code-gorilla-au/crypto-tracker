@@ -1,5 +1,5 @@
 <template>
-  <td class="flex justify-between items-center py-3 px-4">
+  <td class="flex justify-between items-center md:table-cell py-3 px-4">
     <span class="md:hidden">{{ label }}</span>
     <slot></slot>
   </td>
