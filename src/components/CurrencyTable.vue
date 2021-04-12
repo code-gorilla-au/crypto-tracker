@@ -1,32 +1,39 @@
 <template>
-  <div class="flex">
+  <div class="flex w-full md:w-auto">
     <table class="min-w-full bg-white">
-      <thead class="">
-        <tr class="bg-gray-800 text-white">
-          <th :class="headerStyle">
-            <span>#</span>
-          </th>
-          <th :class="[headerStyle, 'w-1/7 text-left']">
-            <span>Name</span>
-          </th>
-          <th :class="[headerStyle, 'w-1/3 text-right']">
-            <span>Current Price</span>
-          </th>
-          <th :class="[headerStyle, 'w-1/3 text-right']">
-            <span>Market Cap</span>
-          </th>
-          <th :class="[headerStyle, 'w-1/3 text-right']">
-            <span>Total Volume</span>
-          </th>
-          <th :class="[headerStyle, 'w-1/3 text-right']">
-            <span>%</span>
-          </th>
-        </tr>
-      </thead>
+      <TableHead>
+        <TableHeader>
+          <span>{{ headers[0] }}</span>
+        </TableHeader>
+        <TableHeader>
+          <span>{{ headers[1] }}</span>
+        </TableHeader>
+        <TableHeader>
+          <span>{{ headers[2] }}</span>
+        </TableHeader>
+        <TableHeader>
+          <span>{{ headers[3] }}</span>
+        </TableHeader>
+        <TableHeader>
+          <span>{{ headers[4] }}</span>
+        </TableHeader>
+        <TableHeader>
+          <span>{{ headers[5] }}</span>
+        </TableHeader>
+      </TableHead>
+
       <tbody class="text-gray-700">
-        <tr v-for="currency in list" :key="currency.id">
-          <td class="text-left py-3 px-4">
-            <div class="flex justify-between items-center">
+        <tr class="flex  flex-col md:table-row" v-for="currency in list" :key="currency.id">
+          <TableData>
+            <span>{{ headers[0] }}</span>
+            <div
+              class="flex
+              justify-start
+              items-center
+              flex-row-reverse
+              md:justify-between
+              md:flex-row"
+            >
               <base-icon
                 class="cursor-pointer text-yellow-500"
                 v-if="isInPortfolio(currency, portfolio)"
@@ -43,24 +50,27 @@
               />
               <span>{{ currency.market_cap_rank }}</span>
             </div>
-          </td>
-          <td :class="['flex justify-start items-center py-3 px-4', 'w-1/7']">
-            <img class="currency-image" :src="currency.image" :alt="currency.name" />
-            <span>{{ currency.name }}</span>
-          </td>
-          <td class="text-right py-3 px-4">
+          </TableData>
+          <TableData class="flex justify-between items-center">
+            <span class="md:hidden">{{ headers[1] }}</span>
+            <div class="flex justify-start items-center">
+              <img class="currency-image" :src="currency.image" :alt="currency.name" />
+              <span>{{ currency.name }}</span>
+            </div>
+          </TableData>
+          <TableData>
             <span>{{ formatCurrency(currency.current_price) }}</span>
-          </td>
+          </TableData>
 
-          <td class="text-right py-3 px-4">
+          <TableData>
             <span>{{ formatCurrency(currency.market_cap) }}</span>
-          </td>
-          <td class="text-right py-3 px-4">
+          </TableData>
+          <TableData>
             <span>{{ formatCurrency(currency.total_volume) }}</span>
-          </td>
-          <td class="text-right py-3 px-4">
+          </TableData>
+          <TableData>
             <span>{{ formatPercent(currency.price_change_percentage_24h) }}</span>
-          </td>
+          </TableData>
         </tr>
       </tbody>
     </table>
@@ -68,12 +78,20 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, PropType } from 'vue';
+import { defineComponent, PropType } from 'vue';
+import TableHead from '@/components/TableHead.vue';
+import TableHeader from '@/components/TableHeader.vue';
+import TableData from '@/components/TableData.vue';
 import { Currency } from '@/lib/coinGeko';
 import { formatCurrency, formatPercent } from '@/lib/format';
 
 export default defineComponent({
   name: 'CurrencyTable',
+  components: {
+    TableHead,
+    TableHeader,
+    TableData,
+  },
   props: {
     currencies: {
       type: Object as PropType<Currency[]>,
@@ -85,8 +103,7 @@ export default defineComponent({
     },
   },
   setup(props, ctx) {
-    const headerStyle = computed(() => 'py-3 px-4 font-semibold text-sm');
-
+    const headers = ['#', 'Name', 'Price', 'Market Cap', 'Volume', '%'];
     function addToPortfolio(currency: Currency): void {
       ctx.emit('add-to-portfolio', currency);
     }
@@ -100,8 +117,8 @@ export default defineComponent({
     }
 
     return {
+      headers,
       list: props.currencies,
-      headerStyle,
       addToPortfolio,
       removeFromPortfolio,
       formatCurrency,
