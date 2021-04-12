@@ -24,8 +24,7 @@
 
       <tbody class="text-gray-700">
         <tr class="flex  flex-col md:table-row" v-for="currency in list" :key="currency.id">
-          <TableData>
-            <span>{{ headers[0] }}</span>
+          <TableData :label="headers[0]">
             <div
               class="flex
               justify-start
@@ -51,24 +50,23 @@
               <span>{{ currency.market_cap_rank }}</span>
             </div>
           </TableData>
-          <TableData class="flex justify-between items-center">
-            <span class="md:hidden">{{ headers[1] }}</span>
+          <TableData :label="headers[1]">
             <div class="flex justify-start items-center">
               <img class="currency-image" :src="currency.image" :alt="currency.name" />
               <span>{{ currency.name }}</span>
             </div>
           </TableData>
-          <TableData>
+          <TableData :label="headers[2]">
             <span>{{ formatCurrency(currency.current_price) }}</span>
           </TableData>
 
-          <TableData>
+          <TableData :label="headers[3]">
             <span>{{ formatCurrency(currency.market_cap) }}</span>
           </TableData>
-          <TableData>
+          <TableData :label="headers[4]">
             <span>{{ formatCurrency(currency.total_volume) }}</span>
           </TableData>
-          <TableData>
+          <TableData :label="headers[5]">
             <span>{{ formatPercent(currency.price_change_percentage_24h) }}</span>
           </TableData>
         </tr>
