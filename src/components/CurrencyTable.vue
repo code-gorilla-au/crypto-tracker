@@ -52,7 +52,7 @@
 
 <script lang="ts">
 import { defineComponent, PropType } from 'vue';
-import TableData from '@/components/TableData.vue';
+import TableData from '@/components/TableColumn.vue';
 import { Currency } from '@/lib/coinGeko';
 import { formatCurrency, formatPercent } from '@/lib/format';
 

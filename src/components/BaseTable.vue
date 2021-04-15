@@ -8,7 +8,7 @@
       </TableHead>
 
       <tbody class="text-gray-700">
-        <tr class="flex  flex-col md:table-row" v-for="row in data" :key="row">
+        <tr :class="[tableRowMobileStyles, tableRowMdStyles]" v-for="row in data" :key="row">
           <slot name="props" :row="row"></slot>
         </tr>
       </tbody>
@@ -37,6 +37,14 @@ export default defineComponent({
       required: false,
       default: () => [],
     },
+  },
+  setup() {
+    const tableRowMobileStyles = 'border-solid border-2 flex  flex-col';
+    const tableRowMdStyles = 'md:border-none border-accent md:table-row';
+    return {
+      tableRowMobileStyles,
+      tableRowMdStyles,
+    };
   },
 });
 </script>
