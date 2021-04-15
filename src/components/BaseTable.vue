@@ -7,7 +7,7 @@
     </TableHead>
 
     <tbody class="text-gray-700">
-      <tr v-if="data.length === 0">
+      <tr class="px-24" v-if="data.length === 0">
         <span>Empty table</span>
       </tr>
       <tr v-else :class="[tableRowMobileStyles, tableRowMdStyles]" v-for="row in data" :key="row">
