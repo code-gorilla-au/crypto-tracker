@@ -34,9 +34,4 @@ export default defineComponent({
   },
 });
 </script>
-<style scoped>
-.portfolio-home-title {
-  font-size: var(--font-lg);
-  font-weight: var(--font-bolder);
-}
-</style>
+<style scoped></style>
