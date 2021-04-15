@@ -2,7 +2,7 @@
   <div class="flex w-full md:w-auto">
     <table class="min-w-full bg-white">
       <TableHead>
-        <TableHeader v-for="header in headers" :key="header[index]">
+        <TableHeader v-for="header in headers" :key="header">
           <span>{{ header }}</span>
         </TableHeader>
       </TableHead>

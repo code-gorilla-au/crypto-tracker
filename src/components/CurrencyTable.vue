@@ -1,95 +1,64 @@
 <template>
-  <div class="flex w-full md:w-auto">
-    <table class="min-w-full bg-white">
-      <TableHead>
-        <TableHeader>
-          <span>{{ headers[0] }}</span>
-        </TableHeader>
-        <TableHeader>
-          <span>{{ headers[1] }}</span>
-        </TableHeader>
-        <TableHeader>
-          <span>{{ headers[2] }}</span>
-        </TableHeader>
-        <TableHeader>
-          <span>{{ headers[3] }}</span>
-        </TableHeader>
-        <TableHeader>
-          <span>{{ headers[4] }}</span>
-        </TableHeader>
-        <TableHeader>
-          <span>{{ headers[5] }}</span>
-        </TableHeader>
-      </TableHead>
-
-      <tbody class="text-gray-700">
-        <tr class="flex  flex-col md:table-row" v-for="currency in list" :key="currency.id">
-          <TableData :label="headers[0]">
-            <div
-              class="flex
+  <base-table :headers="headers" :data="list">
+    <template v-slot:props="props">
+      <TableData :label="headers[0]">
+        <div
+          class="flex
               justify-start
               items-center
               flex-row-reverse
               md:justify-between
               md:flex-row"
-            >
-              <base-icon
-                class="cursor-pointer text-yellow-500"
-                v-if="isInPortfolio(currency, portfolio)"
-                @click="removeFromPortfolio(currency)"
-                pack="fas"
-                icon="fa-star"
-              />
-              <base-icon
-                class="cursor-pointer text-yellow-500"
-                v-else
-                @click="addToPortfolio(currency)"
-                pack="far"
-                icon="fa-star"
-              />
-              <span>{{ currency.market_cap_rank }}</span>
-            </div>
-          </TableData>
-          <TableData :label="headers[1]">
-            <div class="flex justify-start items-center">
-              <img class="currency-image" :src="currency.image" :alt="currency.name" />
-              <span>{{ currency.name }}</span>
-            </div>
-          </TableData>
-          <TableData :label="headers[2]">
-            <span>{{ formatCurrency(currency.current_price) }}</span>
-          </TableData>
+        >
+          <base-icon
+            class="cursor-pointer text-yellow-500"
+            v-if="isInPortfolio(props.row, portfolio)"
+            @click="removeFromPortfolio(props.row)"
+            pack="fas"
+            icon="fa-star"
+          />
+          <base-icon
+            class="cursor-pointer text-yellow-500"
+            v-else
+            @click="addToPortfolio(props.row)"
+            pack="far"
+            icon="fa-star"
+          />
+          <span>{{ props.row.market_cap_rank }}</span>
+        </div>
+      </TableData>
+      <TableData :label="headers[1]">
+        <div class="flex justify-start items-center">
+          <img class="currency-image" :src="props.row.image" :alt="props.row.name" />
+          <span>{{ props.row.name }}</span>
+        </div>
+      </TableData>
+      <TableData :label="headers[2]">
+        <span>{{ formatCurrency(props.row.current_price) }}</span>
+      </TableData>
 
-          <TableData :label="headers[3]">
-            <span>{{ formatCurrency(currency.market_cap) }}</span>
-          </TableData>
-          <TableData :label="headers[4]">
-            <span>{{ formatCurrency(currency.total_volume) }}</span>
-          </TableData>
-          <TableData :label="headers[5]">
-            <span>{{ formatPercent(currency.price_change_percentage_24h) }}</span>
-          </TableData>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+      <TableData :label="headers[3]">
+        <span>{{ formatCurrency(props.row.market_cap) }}</span>
+      </TableData>
+      <TableData :label="headers[4]">
+        <span>{{ formatCurrency(props.row.total_volume) }}</span>
+      </TableData>
+      <TableData :label="headers[5]">
+        <span>{{ formatPercent(props.row.price_change_percentage_24h) }}</span>
+      </TableData>
+    </template>
+  </base-table>
 </template>
 
 <script lang="ts">
 import { defineComponent, PropType } from 'vue';
-import TableHead from '@/components/TableHead.vue';
-import TableHeader from '@/components/TableHeader.vue';
 import TableData from '@/components/TableData.vue';
 import { Currency } from '@/lib/coinGeko';
 import { formatCurrency, formatPercent } from '@/lib/format';
 
 export default defineComponent({
   name: 'CurrencyTable',
-  components: {
-    TableHead,
-    TableHeader,
-    TableData,
-  },
+  components: { TableData },
   props: {
     currencies: {
       type: Object as PropType<Currency[]>,
