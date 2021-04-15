@@ -1,7 +1,7 @@
 <template>
   <base-table :headers="headers" :data="list">
     <template v-slot:props="props">
-      <TableData :label="headers[0]">
+      <TableColumn :label="headers[0]">
         <div
           class="flex
               justify-start
@@ -26,39 +26,39 @@
           />
           <span>{{ props.row.market_cap_rank }}</span>
         </div>
-      </TableData>
-      <TableData :label="headers[1]">
+      </TableColumn>
+      <TableColumn :label="headers[1]">
         <div class="flex justify-start items-center">
           <img class="currency-image" :src="props.row.image" :alt="props.row.name" />
           <span>{{ props.row.name }}</span>
         </div>
-      </TableData>
-      <TableData :label="headers[2]">
+      </TableColumn>
+      <TableColumn :label="headers[2]">
         <span>{{ formatCurrency(props.row.current_price) }}</span>
-      </TableData>
+      </TableColumn>
 
-      <TableData :label="headers[3]">
+      <TableColumn :label="headers[3]">
         <span>{{ formatCurrency(props.row.market_cap) }}</span>
-      </TableData>
-      <TableData :label="headers[4]">
+      </TableColumn>
+      <TableColumn :label="headers[4]">
         <span>{{ formatCurrency(props.row.total_volume) }}</span>
-      </TableData>
-      <TableData :label="headers[5]">
+      </TableColumn>
+      <TableColumn :label="headers[5]">
         <span>{{ formatPercent(props.row.price_change_percentage_24h) }}</span>
-      </TableData>
+      </TableColumn>
     </template>
   </base-table>
 </template>
 
 <script lang="ts">
 import { defineComponent, PropType } from 'vue';
-import TableData from '@/components/TableColumn.vue';
+import TableColumn from '@/components/TableColumn.vue';
 import { Currency } from '@/lib/coinGeko';
 import { formatCurrency, formatPercent } from '@/lib/format';
 
 export default defineComponent({
   name: 'CurrencyTable',
-  components: { TableData },
+  components: { TableColumn },
   props: {
     currencies: {
       type: Object as PropType<Currency[]>,
@@ -70,7 +70,7 @@ export default defineComponent({
     },
   },
   setup(props, ctx) {
-    const headers = ['#', 'Name', 'Price', 'Market Cap', 'Volume', '%'];
+    const headers = ['Rank', 'Name', 'Price', 'Market Cap', 'Volume', '%'];
     function addToPortfolio(currency: Currency): void {
       ctx.emit('add-to-portfolio', currency);
     }

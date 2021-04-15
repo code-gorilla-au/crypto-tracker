@@ -39,8 +39,8 @@ export default defineComponent({
     },
   },
   setup() {
-    const tableRowMobileStyles = 'border-solid border-2 flex  flex-col';
-    const tableRowMdStyles = 'md:border-none border-accent md:table-row';
+    const tableRowMobileStyles = 'border-solid border-2 border-accent flex flex-col';
+    const tableRowMdStyles = 'md:border-none md:table-row';
     return {
       tableRowMobileStyles,
       tableRowMdStyles,
