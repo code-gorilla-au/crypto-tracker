@@ -1,5 +1,5 @@
 <template>
-  <nav class="flex justify-evenly items-center text-white font-semibold">
+  <nav class="my-2 flex justify-evenly items-center text-white font-semibold">
     <router-link to="/">home</router-link> |
     <router-link to="/portfolio">portfolio</router-link>
   </nav>
