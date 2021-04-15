@@ -1,5 +1,5 @@
 <template>
-  <div class="flex w-full md:w-auto">
+  <div class="flex w-full md:w-auto flex-grow">
     <table class="min-w-full bg-white">
       <TableHead>
         <TableHeader v-for="header in headers" :key="header">
@@ -8,7 +8,10 @@
       </TableHead>
 
       <tbody class="text-gray-700">
-        <tr :class="[tableRowMobileStyles, tableRowMdStyles]" v-for="row in data" :key="row">
+        <tr v-if="data.length === 0">
+          <span>Empty table</span>
+        </tr>
+        <tr v-else :class="[tableRowMobileStyles, tableRowMdStyles]" v-for="row in data" :key="row">
           <slot name="props" :row="row"></slot>
         </tr>
       </tbody>
