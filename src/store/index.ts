@@ -29,7 +29,10 @@ export default createStore({
       context.commit(ADD_TO_PORTFOLIO, currency);
       return Promise.resolve();
     },
-    [REMOVE_FROM_PORTFOLIO](context: ActionContext<State, State>, currency: Currency): Promise<void> {
+    [REMOVE_FROM_PORTFOLIO](
+      context: ActionContext<State, State>,
+      currency: Currency,
+    ): Promise<void> {
       context.commit(REMOVE_FROM_PORTFOLIO, currency);
       return Promise.resolve();
     },
