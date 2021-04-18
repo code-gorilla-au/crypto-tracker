@@ -8,7 +8,7 @@
 
     <tbody class="text-gray-700">
       <tr class="px-24" v-if="data.length === 0">
-        <span>Empty table</span>
+        <slot name="empty-slate"></slot>
       </tr>
       <tr v-else :class="[tableRowMobileStyles, tableRowMdStyles]" v-for="row in data" :key="row">
         <slot name="props" :row="row"></slot>

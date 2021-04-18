@@ -38,6 +38,9 @@
         <span>{{ formatPercent(props.row.price_change_percentage_24h) }}</span>
       </base-table-column>
     </template>
+    <template #empty-slate>
+      <p class="text-black px-32">No currencies in your portfolio</p>
+    </template>
   </base-table>
 </template>
 
