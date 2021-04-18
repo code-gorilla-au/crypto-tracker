@@ -1,5 +1,5 @@
 <template>
-  <table class="md:w-auto table-auto bg-white">
+  <table class="w-full md:w-auto table-auto bg-white">
     <TableHead>
       <TableHeader v-for="header in headers" :key="header">
         <span>{{ header }}</span>
