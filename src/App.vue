@@ -6,7 +6,7 @@
           <component :is="Component"></component>
           <template #fallback>
             <div class="loader-container">
-              <h1>Loading</h1>
+              <h1 class="flex justify-center text-5xl">Loading</h1>
             </div>
           </template>
         </suspense>
