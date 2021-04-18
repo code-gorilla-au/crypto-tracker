@@ -1,6 +1,9 @@
 import { createStore, ActionContext } from 'vuex';
 import { Currency } from '@/lib/coinGeko';
-import { ADD_TO_PORTFOLIO, REMOVE_TO_PORTFOLIO } from '@/store/constants';
+import {
+  ADD_TO_PORTFOLIO,
+  REMOVE_FROM_PORTFOLIO,
+} from '@/store/constants';
 
 export interface State {
   portfolio: Currency[];
@@ -16,7 +19,7 @@ export default createStore({
     [ADD_TO_PORTFOLIO](state: State, currency: Currency) {
       state.portfolio = [...state.portfolio, currency];
     },
-    [REMOVE_TO_PORTFOLIO](state: State, currency: Currency) {
+    [REMOVE_FROM_PORTFOLIO](state: State, currency: Currency) {
       const index = state.portfolio.findIndex((element) => element.id === currency.id);
       state.portfolio.splice(index, 1);
     },
@@ -26,8 +29,8 @@ export default createStore({
       context.commit(ADD_TO_PORTFOLIO, currency);
       return Promise.resolve();
     },
-    [REMOVE_TO_PORTFOLIO](context: ActionContext<State, State>, currency: Currency): Promise<void> {
-      context.commit(REMOVE_TO_PORTFOLIO, currency);
+    [REMOVE_FROM_PORTFOLIO](context: ActionContext<State, State>, currency: Currency): Promise<void> {
+      context.commit(REMOVE_FROM_PORTFOLIO, currency);
       return Promise.resolve();
     },
   },

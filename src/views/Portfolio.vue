@@ -10,7 +10,7 @@
 <script lang="ts">
 import { computed, defineComponent } from 'vue';
 import { useStore } from 'vuex';
-import { REMOVE_TO_PORTFOLIO } from '@/store/constants';
+import { REMOVE_FROM_PORTFOLIO } from '@/store/constants';
 import { Currency } from '@/lib/coinGeko';
 import PorfolioTable from '@/components/PortfolioTable.vue';
 import Nav from '@/components/Nav.vue';
@@ -25,7 +25,7 @@ export default defineComponent({
     const store = useStore();
 
     async function removeFromPortfolio(currency: Currency) {
-      await store.dispatch(REMOVE_TO_PORTFOLIO, currency);
+      await store.dispatch(REMOVE_FROM_PORTFOLIO, currency);
     }
     return {
       portfolio: computed(() => store.state.portfolio),

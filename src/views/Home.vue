@@ -17,7 +17,7 @@
 import { computed, ComputedRef, defineComponent } from 'vue';
 import { useStore } from 'vuex';
 import { Currency } from '@/lib/coinGeko';
-import { ADD_TO_PORTFOLIO, REMOVE_TO_PORTFOLIO } from '@/store/constants';
+import { ADD_TO_PORTFOLIO, REMOVE_FROM_PORTFOLIO } from '@/store/constants';
 import CurrencyTable from '@/components/CurrencyTable.vue';
 import Nav from '@/components/Nav.vue';
 import getCurrencies from '@/api/coinGeko';
@@ -38,7 +38,7 @@ export default defineComponent({
       await store.dispatch(ADD_TO_PORTFOLIO, currency);
     }
     async function removeFromPortfolio(currency: Currency): Promise<void> {
-      await store.dispatch(REMOVE_TO_PORTFOLIO, currency);
+      await store.dispatch(REMOVE_FROM_PORTFOLIO, currency);
     }
 
     return {
