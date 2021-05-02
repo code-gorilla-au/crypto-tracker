@@ -1,5 +1,7 @@
+const currencyFormat = process.env.VUE_APP_CURRENCY_FORMAT;
+
 export function formatPercent(value: number): string {
-  const formatter = new Intl.NumberFormat('en-AU', {
+  const formatter = new Intl.NumberFormat(currencyFormat, {
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
   });
@@ -7,7 +9,7 @@ export function formatPercent(value: number): string {
 }
 
 export function formatCurrency(value: number): string {
-  const formatter = new Intl.NumberFormat('en-AU', {
+  const formatter = new Intl.NumberFormat(currencyFormat, {
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
     currency: 'AUD',
